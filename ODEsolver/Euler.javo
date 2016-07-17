@@ -1,0 +1,74 @@
+package solver;
+
+import java.util.*;
+import parser.mathParser.Expression;
+import parser.mathParser.ExpressionBuilder;
+
+/**
+ * <p>
+ * Title: Euler Differential Equation Solver Method</p>
+ * <p>
+ * Description: class that solves differential Equations with the standard Euler
+ * method</p>
+ * <p>
+ * Copyright: Copyright (c) 2002</p>
+ * <p>
+ * Company: HTW-Dresden</p>
+ *
+ * @author <A HREF="Jens.Langner@htw-dresden.de">Jens Langner</A>
+ * @version 1.0
+ */
+public class Euler extends UserFunction {
+
+    public static String IDENTITY = "Euler";
+
+    Expression e;
+
+    public Euler(String userFunct, String reactants) {
+        super(userFunct);
+        resultVectar = new ArrayList<>();
+
+        // initialize the user function
+        e = new ExpressionBuilder(userFunct)
+                .variables(reactants)
+                .build();
+    }
+
+    // eps       precision of the calculations
+    // h        initial value of the integration step
+    @Override
+    public List<Tuples> calcValue(double xInitial, double xFinal,
+            double yInitial, double h, double eps) {
+
+        // if (xf-x0)*h < 0 we cannot reach the result
+        // also if h == 0 we have to return
+        if ((xFinal - xInitial) * h < 0 || h <= 0 || eps < 0) {
+            return null;
+        }
+
+        /* loop through steps
+         for i=1:n
+         x(i+1)=x(i)+h;
+
+         y(i+1)=y(i)+h*f(x(i),y(i));
+         end
+        */
+        x_plus0 = x_plus1 = xInitial;
+        y_plus0 = yInitial;
+        while (x_plus1 < xFinal) {
+
+            // x(i+1)=x(i)+h;
+            x_plus1 = x_plus1 + h;
+
+            e.setVariable("x_plus1", x_plus1);
+//            e.setVariable("y_plus0", y_plus0);
+            // y(i+1)=y(i)+h*f(x(i),y(i));
+            double delta = e.evaluate();
+            y_plus0 = y_plus0 + h * delta ;
+
+            resultVectar.add(new Tuples(x_plus1, y_plus0));
+        }
+
+        return resultVectar;
+    }
+}
