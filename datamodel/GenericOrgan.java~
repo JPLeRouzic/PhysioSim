@@ -1,0 +1,52 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package datamodel;
+
+import wholebody.panel.fullBody.Constants_A;
+import wholebody.panel.fullBody.HumanModel;
+import static wholebody.panel.fullBody.HumanModel.v;
+
+/**
+ *
+ * @author jplr
+ */
+public class GenericOrgan {
+        double v ;
+        double stWt ;
+        double F ;
+        double fclear ;
+        double ps ;
+        double fw ;
+        double cProt ;
+        double ktiss ;
+        double xktiss ;
+        double De ;
+        Vm ;
+        Km ;
+        Pcell ;
+        ecf ;
+        frecf ;
+        wfract ;
+        klip ;
+        flung ;
+        vlung ;
+        flmass ;
+        concunit = new int[Constants_A.NORGAN + 1];
+        concunitcell = new int[Constants_A.NORGAN + 1];
+        mshunt ;
+        shunt_n2o ;
+        fatfr ;
+        bshunt ;
+        tnk ;
+        abs_clr ;
+        fwcell ;
+        capenzyme ;
+        shunt_n2o ;
+        fr_arm = new double[Constants_A.NORGAN];
+        flow ;
+        avent ;
+       
+}
