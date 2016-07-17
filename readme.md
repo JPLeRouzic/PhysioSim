@@ -5,7 +5,7 @@ At the moment it does not work, only some parts are somewhat near Alpha stage.
 
 The main inspiration for the Gui is BioDmet from General Electric, it uses the same idea of representing organs as a tree. However BioDmet uses its own proprietary model format and is quite rigid. For example there is only one lung, without any compartments. On the overall BioDmet model of human physiology is quite limited. It is probably one of the many avatars of Guyton's model and has never been updated, it neither have any mechanism for accepting bugs or contributions.
 
-Like other simulators it has several ODE solvers but at some time we will try Probabilistic Programming in order to make it possible to start from the intended result and progress toward a model description. This will speed up hypothesis testing.
+Like other simulators PhysioSim has several ODE solvers, that implement a model but at some time we will try Probabilistic Programming in order to make it possible to start from the intended result and progress toward a model description. This will speed up hypothesis testing.
 
 The physiology model is implemented at organ level (or below) by SBML format. But the fluid circulation between organs is described in a single XML file which is not in SBML format. The fluid circulation implement a PBPK functionality which should be as good as what other PBPK simulator provide today. This XML file will be modifiable as well, therefore users will be able to use PhysioSim to create and analyze pharmacokinetic models. 
 
